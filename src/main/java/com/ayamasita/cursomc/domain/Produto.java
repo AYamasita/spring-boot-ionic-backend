@@ -13,7 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 public class Produto implements Serializable{
@@ -107,9 +107,5 @@ public class Produto implements Serializable{
 	public String toString() {
 		return "Produto [id=" + id + ", nome=" + nome + ", preco=" + preco + "]";
 	}
-
-	
-	
-	
 
 }
