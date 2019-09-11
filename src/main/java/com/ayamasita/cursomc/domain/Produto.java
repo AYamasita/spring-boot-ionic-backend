@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -40,6 +41,7 @@ public class Produto implements Serializable{
 			  inverseJoinColumns = @JoinColumn(name = "categoria_id"))  //PK	
 	private List<Categoria> categorias = new ArrayList<Categoria>();
 	
+	@JsonIgnore //não é importante serializar a partira do produtos os itens de pedido.. mas sim do item pedido qual é o produto.
 	@OneToMany(mappedBy = "id.produto")  //mapeamento da associação
 	private Set<ItemPedido> itens = new HashSet<ItemPedido>();
 	
@@ -52,6 +54,9 @@ public class Produto implements Serializable{
 		this.preco = preco;
 	}
 	
+	//tudo que começa com o get.. o sistema identifica que precisa ser serializado.	
+	//@JsonIgnore no lado da associação que não deve ser serializado
+	@JsonIgnore
 	public List<Pedido> getPedidos()
 	{
 		//Informa os pedidos que o produto possui.

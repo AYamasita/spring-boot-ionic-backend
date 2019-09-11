@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 
 
 import com.ayamasita.cursomc.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)  //Joined/SingleTable
@@ -24,6 +25,7 @@ public abstract class Pagamento implements Serializable {
 	private Integer estado;
 	//é realizado um cast EstadoPagamento para Integer.
 	
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name= "pedido_id")
 	@MapsId //o pedido vai ser o nro do pedido.	

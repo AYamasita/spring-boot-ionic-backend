@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class ItemPedido implements Serializable {
 	
@@ -13,6 +15,7 @@ public class ItemPedido implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@JsonIgnore //o item de pedido ser ignorado devido a associação entre Pedido - Produto
 	@EmbeddedId
 	private ItemPedidoPK id = new ItemPedidoPK(); // atributo composto para atender a Associação com o JPA
 	
@@ -35,10 +38,19 @@ public class ItemPedido implements Serializable {
 		
 	}
 	
+	//tudo que começa com o get.. o sistema identifica que precisa ser serializado.	
+	//@JsonIgnore no lado da associação que não deve ser serializad
+	@JsonIgnore
 	public Pedido getPedido()
 	{
 		return id.getPedido();
 	}
+		
+	public Produto getProduto()
+	{
+		return id.getProduto();
+	}
+	
 	
 	@Override
 	public int hashCode() {
@@ -63,12 +75,7 @@ public class ItemPedido implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public Produto getProduto()
-	{
-		return id.getProduto();
-	}
+	}	
 
 	public ItemPedidoPK getId() {
 		return id;
