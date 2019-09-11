@@ -29,7 +29,7 @@ public class Produto implements Serializable{
 	private String nome;
 	private Double preco;
 	
-	//mapeamento entre produtos e categorias
+	//mapeamento entre produtos e categorias que evitam a referencia ciclica(JsonBackReference)
 	@JsonBackReference
 	@ManyToMany
 	@JoinTable(name= "PRODUTO_CATEGORIA",

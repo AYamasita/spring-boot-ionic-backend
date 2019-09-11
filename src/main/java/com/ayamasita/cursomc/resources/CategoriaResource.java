@@ -14,7 +14,7 @@ import com.ayamasita.cursomc.services.CategoriaService;
 @RequestMapping(value="/categorias")
 public class CategoriaResource {
 	
-	@Autowired
+	@Autowired  //instancia automaticamente
 	private CategoriaService service;
 	
 	@RequestMapping(value ="/{id}", method = RequestMethod.GET)
@@ -24,4 +24,18 @@ public class CategoriaResource {
 		return ResponseEntity.ok().body(obj);
 			
 	}
+/*	
+	@RequestMapping(method = RequestMethod.GET)
+	public List<Categoria> listar() {
+		
+		Categoria cat1 = new Categoria(1,"Informatica");
+		Categoria cat2 = new Categoria(2,"Escritorio");
+		
+		List<Categoria> lista = new ArrayList<Categoria>();
+		lista.add(cat1);
+		lista.add(cat2);
+		
+		return lista;
+	}
+	**/
 }

@@ -14,7 +14,7 @@ import com.ayamasita.cursomc.services.exceptions.ObjectNotFoundException;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 	
-	@ExceptionHandler(ObjectNotFoundException.class) //indica que é um tratador de exceção
+	@ExceptionHandler(ObjectNotFoundException.class) //indica que é um tratador de exceção da classe ObjectNotFoundException
 	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request)
 	{
 		StandardError err = new StandardError(HttpStatus.NOT_FOUND.value() ,e.getMessage(), System.currentTimeMillis());

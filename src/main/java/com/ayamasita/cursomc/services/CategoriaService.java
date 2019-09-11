@@ -13,10 +13,9 @@ import com.ayamasita.cursomc.services.exceptions.ObjectNotFoundException;
 @Service
 public class CategoriaService {
 	
-	@Autowired 
-	private CategoriaRepository repo;
+	@Autowired //automaticamente instanciada - injecao de dep. ou inversao controle
+	private CategoriaRepository repo;	
 	
-	//automaticamente instanciada - injecao de dep. ou inversao controle
 	public Categoria buscar(Integer id) {
 	
 		Optional<Categoria> obj = repo.findById(id);
