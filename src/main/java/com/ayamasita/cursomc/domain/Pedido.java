@@ -29,11 +29,11 @@ public class Pedido implements Serializable{
 	@JsonFormat(pattern = "dd/MM/yy HH:mm:ss")
 	private Date instante;
 	
-	@JsonManagedReference
+	//@JsonManagedReference
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "pedido") //evitar o erro de entidade transiente entre Pedido-Pagamento - restricao do JPA
 	private Pagamento pagamento;
 	
-	@JsonManagedReference
+	//@JsonManagedReference
 	@ManyToOne
 	@JoinColumn(name= "cliente_id")
 	private Cliente cliente;

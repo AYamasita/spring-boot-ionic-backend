@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 @Embeddable  //subclasse da ItemPedido
 public class ItemPedidoPK implements Serializable{
 
-
 	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	@JoinColumn(name= "pedido_id")
@@ -58,7 +57,4 @@ public class ItemPedidoPK implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-
 }

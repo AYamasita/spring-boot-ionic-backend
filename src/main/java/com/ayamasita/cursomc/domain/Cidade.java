@@ -20,7 +20,7 @@ public class Cidade implements Serializable{
 	private Integer id;
 	private String nome;
 	
-	@JsonManagedReference //Proteger contra serialização Json cíclica
+	//@JsonManagedReference //Proteger contra serialização Json cíclica
 	@ManyToOne
 	@JoinColumn(name="estado_id") //definindo o nome do campo na tabela estado(PK)
 	private Estado estado;
