@@ -19,15 +19,21 @@ public class CategoriaService {
 	@Autowired //automaticamente instanciada - injecao de dep. ou inversao controle
 	private CategoriaRepository repo;	
 	
-	public Categoria buscar(Integer id) {
+	public Categoria find(Integer id) {
 	
 		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() 
-				-> new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));	
+				-> new ObjectNotFoundException("Object not found! Id: " + id + ", Type: " + Categoria.class.getName()));	
 	}		
 	
 	public Categoria insert(Categoria obj) {
 		obj.setId(null);
+		return repo.save(obj);		
+	}
+	
+	public Categoria update(Categoria obj)
+	{
+		find(obj.getId());	
 		return repo.save(obj);
 		
 	}
